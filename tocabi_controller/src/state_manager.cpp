@@ -149,8 +149,7 @@ void *StateManager::StateThread()
         {
             clock_nanosleep(CLOCK_MONOTONIC, 0, &tv_us1, NULL);
 
-            __asm__("pause" ::
-                        : "memory");
+            cpu_relax();
             if (dc_.tc_shm_->shutdown)
                 break;
         }
